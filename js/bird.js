@@ -34,22 +34,22 @@ function initMap() {
     // Data Loop
     json_response.forEach(function(bird) {
       var marker = {lat: parseFloat(bird.location.latitude), lng: parseFloat(bird.location.longitude)};
-      addMarker(marker, bird.code, bird.battery_level)
+      addMarker(marker, bird.code, bird.id, bird.battery_level)
     }) // end data loop
   }); // downloadUrl
 } //initMap
 
 // Adds a marker to the map and push to the array.
-function addMarker(bird, code, battery) {
-  // var bird_icon = {
-  //   url : 'img/bird.png',
-  //   scaledSize: new google.maps.Size(40, 40)
-  // }
+function addMarker(bird, code, id, battery) {
+  var bird_icon = {
+    url : 'img/sam.png',
+    scaledSize: new google.maps.Size(30, 30)
+  }
 
   var marker = new google.maps.Marker({
     position: bird,
-    map: map
-    // icon: bird_icon
+    map: map,
+    icon: bird_icon
   });
 
   markers.push(marker);
@@ -62,9 +62,10 @@ function addMarker(bird, code, battery) {
   infowincontent.appendChild(strong);
   infowincontent.appendChild(document.createElement('br'));
 
-  // var text = document.createElement('text');
-  // text.textContent = my_vehicle + " - " + my_timestamp
-  // infowincontent.appendChild(text);
+  var text = document.createElement('text');
+  text.textContent = code
+  console.log(id)
+  infowincontent.appendChild(text);
 
   marker.addListener('click', function() {
     infoWindow.setContent(infowincontent);
