@@ -64,7 +64,6 @@ function addMarker(bird, code, id, battery) {
 
   var text = document.createElement('text');
   text.textContent = code
-  console.log(id)
   infowincontent.appendChild(text);
 
   marker.addListener('click', function() {
