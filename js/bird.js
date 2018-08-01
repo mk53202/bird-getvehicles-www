@@ -21,7 +21,7 @@ function initMap() {
   };
 
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 14,
     center: myMapCenter
   });
   map.setOptions({styles: mapOptionsHide['hide']});
