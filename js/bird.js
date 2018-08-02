@@ -32,7 +32,7 @@ function initMap() {
     var json_response = JSON.parse(data.response) // Transform JSON String to Object
 
     if( json_response === undefined || json_response.length == 0 ) {
-      alert("Sorry Walley World is closed. Try again tomorrow when the Birds are out folks")
+      alert( "Sorry Walley World is closed. Try again tomorrow when the Birds are out folks!" )
     }
     // Data Loop
     else {
@@ -46,6 +46,7 @@ function initMap() {
 
 // Adds a marker to the map and push to the array.
 function addMarker(bird, code, id, battery) {
+
   var bird_icon = {
     url : 'img/sam.png',
     scaledSize: new google.maps.Size(30, 30)
