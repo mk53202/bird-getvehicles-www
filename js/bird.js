@@ -31,11 +31,16 @@ function initMap() {
 
     var json_response = JSON.parse(data.response) // Transform JSON String to Object
 
+    if( json_response === undefined || json_response.length == 0 ) {
+      alert("Sorry Walley World is closed. Try again tomorrow when the Birds are out folks")
+    }
     // Data Loop
-    json_response.forEach(function(bird) {
-      var marker = {lat: parseFloat(bird.location.latitude), lng: parseFloat(bird.location.longitude)};
-      addMarker(marker, bird.code, bird.id, bird.battery_level)
-    }) // end data loop
+    else {
+      json_response.forEach(function(bird) {
+        var marker = {lat: parseFloat(bird.location.latitude), lng: parseFloat(bird.location.longitude)};
+        addMarker(marker, bird.code, bird.id, bird.battery_level)
+      }
+    )} // end data loop
   }); // downloadUrl
 } //initMap
 
