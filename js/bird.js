@@ -42,7 +42,7 @@ function initMap() {
         addMarker(marker, bird.code, bird.id, bird.battery_level)
       }
     )} // end data loop
-    console.log("Bird Count -> " + bird_count);
+    console.log("Available Birds -> " + bird_count)
   }); // downloadUrl
 } //initMap
 
@@ -76,10 +76,20 @@ function addMarker(bird, code, id, battery) {
 
   bird_count+=1
 
+  marker.addListener('mouseover', function() {
+    infoWindow.setContent(infowincontent);
+    infoWindow.open(map, marker);
+  })
+
   marker.addListener('click', function() {
     infoWindow.setContent(infowincontent);
     infoWindow.open(map, marker);
   })
+
+  marker.addListener('mouseout', function() {
+    infoWindow.close(map, marker);
+  })
+
 }
 
 // Sets the map on all markers in the array.
