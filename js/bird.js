@@ -2,6 +2,7 @@
 
 var map;
 var markers = [];
+var bird_count = 0;
 
 function initMap() {
   var myMapCenter = {lat: 43.052955, lng: -87.9003088};
@@ -41,6 +42,7 @@ function initMap() {
         addMarker(marker, bird.code, bird.id, bird.battery_level)
       }
     )} // end data loop
+    console.log("Bird Count -> " + bird_count);
   }); // downloadUrl
 } //initMap
 
@@ -64,13 +66,15 @@ function addMarker(bird, code, id, battery) {
   var infowincontent = document.createElement('div');
 
   var strong = document.createElement('strong');
-  strong.textContent = battery + "%"
+  strong.textContent = "Battery level: " + battery + "%"
   infowincontent.appendChild(strong);
   infowincontent.appendChild(document.createElement('br'));
 
   var text = document.createElement('text');
-  text.textContent = code
+  text.textContent = "Unlock code: " + code
   infowincontent.appendChild(text);
+
+  bird_count+=1
 
   marker.addListener('click', function() {
     infoWindow.setContent(infowincontent);
